@@ -1,0 +1,30 @@
+# Simulation
+*.vcd
+*.fst
+*.wlf
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+*~
+
+# Yosys / synthesis generated files
+synth/runs/
+synth/tmp/
+synth/work/
+synth/netlist/*.tmp
+
+# OpenLane generated runs
+openlane/runs/
+openlane/tmp/
+
+# Generic reports generated during experiments
+*.rpt
+
+# OS / editor
+.vscode/
+.DS_Store
+Thumbs.db
