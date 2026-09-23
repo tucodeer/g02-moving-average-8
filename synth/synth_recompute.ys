@@ -1,0 +1,16 @@
+read_verilog rtl/moving_average_8_recompute.v
+
+hierarchy -check -top moving_average_8_recompute
+
+proc
+opt
+
+memory
+opt
+
+techmap
+opt
+
+stat
+
+write_verilog synth/netlist/moving_average_8_recompute_netlist.v

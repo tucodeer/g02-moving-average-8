@@ -1,0 +1,16 @@
+G02 - 8-Point Moving Average Filter
+Baseline STA - Sliding Accumulation
+
+Cell count: 389
+Flip-flops: 91
+Combinational cells: 298
+
+Clock period: 10 ns
+Target frequency: 100 MHz
+
+Worst reported data path:
+Data arrival time: 5.172 ns
+Setup slack: 4.659 ns
+
+TNS: 0.00 ns
+WNS: 0.00 ns

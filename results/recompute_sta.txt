@@ -1,0 +1,22 @@
+G02 - 8-Point Moving Average Filter
+Baseline STA - Recompute Architecture
+
+Cell count: 490
+Flip-flops: 80
+Combinational cells: 410
+
+Clock period used for Fmax check: 6.49 ns
+
+Worst reported synchronous path:
+Data arrival time: 6.363 ns
+Data required time: 6.368 ns
+Setup slack: 0.005 ns
+
+Estimated minimum clock period: ~6.485 ns
+Estimated Fmax: ~154.2 MHz
+
+Note:
+The Fmax value is estimated from the minimum clock period
+required for the reported worst synchronous path.
+STA was performed on the synthesized Sky130 netlist
+using the tt_025C_1v80 liberty corner.

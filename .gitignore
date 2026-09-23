@@ -1,4 +1,5 @@
 # Simulation
+sim/
 *.vcd
 *.fst
 *.wlf
@@ -28,3 +29,6 @@ openlane/tmp/
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Generated synthesis netlists
+synth/netlist/
