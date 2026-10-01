@@ -1,0 +1,27 @@
+G02 - 8-Point Moving Average Filter
+Post-Route STA - Sliding Accumulation
+
+Corner: max_ss_100C_1v60
+
+Post-route timing sweep:
+- 9.50 ns: slack = -0.03 ns (VIOLATED)
+- 9.52 ns: slack = -0.01 ns (VIOLATED)
+- 9.53 ns: slack =  0.00 ns (MET)
+- 9.55 ns: slack = +0.02 ns (MET)
+
+Estimated minimum clock period:
+~9.53 ns
+
+Estimated maximum frequency:
+~104.93 MHz
+
+Worst reported synchronous path:
+_620_/Q -> _632_/D
+
+Important note:
+The worst post-route path is mainly control logic associated
+with the write-pointer/control network. It is not assumed to be
+the direct sliding-sum datapath critical path.
+
+The timing result is based on post-route parasitic extraction
+using the max_ss_100C_1v60 corner and the routed Sky130 design.

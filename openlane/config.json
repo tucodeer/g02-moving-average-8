@@ -1,0 +1,11 @@
+{
+  "DESIGN_NAME": "moving_average_8",
+  "VERILOG_FILES": [
+    "dir::../rtl/moving_average_8.v"
+  ],
+  "CLOCK_PORT": "clk",
+  "CLOCK_PERIOD": 10.0,
+  "PDK": "sky130A",
+  "STD_CELL_LIBRARY": "sky130_fd_sc_hd",
+  "DESIGN_IS_CORE": false
+}
