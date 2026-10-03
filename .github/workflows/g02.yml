@@ -1,0 +1,113 @@
+name: G02 RTL-to-GDSII CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  rtl-simulation:
+    name: RTL Simulation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Icarus Verilog
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y iverilog
+
+      - name: Run self-checking testbench
+        run: |
+          mkdir -p sim
+          iverilog -g2012 \
+            -o sim/moving_average_8_tb \
+            rtl/moving_average_8.v \
+            tb/moving_average_8_tb.v
+          vvp sim/moving_average_8_tb
+
+  rtl-to-gds:
+    name: OpenLane RTL-to-GDSII
+    runs-on: ubuntu-latest
+    needs: rtl-simulation
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepare Volare directory
+        run: |
+          mkdir -p "$HOME/.volare"
+
+      - name: Install Sky130A PDK
+        run: |
+          docker run --rm \
+            -v "$HOME/.volare:/root/.volare" \
+            ghcr.io/efabless/openlane2:2.3.10 \
+            bash -lc '
+              set -e
+
+              echo "=== Volare version ==="
+              volare --version
+
+              echo "=== Fetch Sky130 PDK ==="
+              volare fetch \
+                --pdk sky130 \
+                0fe599b2afb6708d281543108caf8310912f54af
+
+              echo "=== Enable Sky130 PDK ==="
+              volare enable \
+                --pdk sky130 \
+                0fe599b2afb6708d281543108caf8310912f54af
+            '
+
+      - name: Run OpenLane
+        run: |
+          docker run --rm \
+            -v "$PWD:/workspace" \
+            -v "$HOME/.volare:/root/.volare" \
+            -w /workspace \
+            ghcr.io/efabless/openlane2:2.3.10 \
+            bash -lc '
+              set -e
+
+              echo "=== OpenLane version ==="
+              openlane --version
+
+              echo "=== Volare ==="
+              volare --version
+
+              echo "=== PDK ==="
+              find /root/.volare -maxdepth 5 -type d -name "sky130A" | head
+
+              echo "=== Run G02 flow ==="
+              openlane \
+                /workspace/openlane/config.json \
+                --run-tag ci
+            '
+
+      - name: Check GDS output
+        run: |
+          test -f openlane/runs/ci/final/gds/moving_average_8.gds
+          echo "GDS generated successfully."
+
+      - name: Check final metrics
+        run: |
+          test -f openlane/runs/ci/final/metrics.csv
+          echo "Final metrics found."
+
+      - name: Upload GDS and reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: g02-openlane-results
+          path: |
+            openlane/runs/ci/final/gds/moving_average_8.gds
+            openlane/runs/ci/final/metrics.csv
+            openlane/runs/ci/final/def/moving_average_8.def
+            openlane/runs/ci/final/lef/moving_average_8.lef
