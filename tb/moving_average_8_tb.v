@@ -158,6 +158,50 @@ module moving_average_8_tb;
 
         end
     endtask
+        // =========================================
+    // Send invalid sample
+    // =========================================
+
+    task send_invalid;
+
+        input [7:0] data;
+
+        begin
+
+            @(negedge clk);
+
+            ui_in = data;
+            uio_in[0] = 1'b0;
+
+            // Không cập nhật reference model
+            // vì sample này không hợp lệ.
+
+            @(posedge clk);
+            #1;
+
+            // DUT phải không tạo output mới
+
+            if (uio_out[0] !== 1'b0) begin
+
+                $display(
+                    "ERROR: invalid sample=%0d | output valid should be 0, got %b",
+                    data,
+                    uio_out[0]
+                );
+
+            end
+            else begin
+
+                $display(
+                    "PASS: invalid sample=%0d | sample ignored",
+                    data
+                );
+
+            end
+
+        end
+
+    endtask
     // =========================================
     // Reset DUT and reference model
     // =========================================
@@ -294,6 +338,52 @@ module moving_average_8_tb;
         send_and_check(8'd255);
         send_and_check(8'd255);
         send_and_check(8'd255);
+        
+                // =====================================
+        // Test 7
+        // Invalid input cycles
+        // =====================================
+
+        reset_test;
+
+        send_and_check(8'd10);
+        send_and_check(8'd20);
+        send_and_check(8'd30);
+
+        send_invalid(8'd99);
+
+        send_and_check(8'd40);
+        send_and_check(8'd50);
+        send_and_check(8'd60);
+        send_and_check(8'd70);
+        send_and_check(8'd80);
+        // =====================================
+        // Test 8
+        // Reset in the middle of operation
+        // =====================================
+
+        reset_test;
+
+        // Partial window before reset
+        send_and_check(8'd10);
+        send_and_check(8'd20);
+        send_and_check(8'd30);
+        send_and_check(8'd40);
+
+        // Reset while the filter is operating
+        reset_test;
+
+        // New window after reset
+        send_and_check(8'd1);
+        send_and_check(8'd2);
+        send_and_check(8'd3);
+        send_and_check(8'd4);
+        send_and_check(8'd5);
+        send_and_check(8'd6);
+        send_and_check(8'd7);
+        send_and_check(8'd8);
+
+
         // =====================================
         // Finish
         // =====================================
