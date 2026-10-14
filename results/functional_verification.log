@@ -1,0 +1,109 @@
+PASS: sample=10 | count=1 | output invalid
+PASS: sample=20 | count=2 | output invalid
+PASS: sample=30 | count=3 | output invalid
+PASS: sample=40 | count=4 | output invalid
+PASS: sample=50 | count=5 | output invalid
+PASS: sample=60 | count=6 | output invalid
+PASS: sample=70 | count=7 | output invalid
+PASS: sample=80 | expected=45 | got=45
+PASS: sample=10 | count=1 | output invalid
+PASS: sample=20 | count=2 | output invalid
+PASS: sample=30 | count=3 | output invalid
+PASS: sample=40 | count=4 | output invalid
+PASS: sample=50 | count=5 | output invalid
+PASS: sample=60 | count=6 | output invalid
+PASS: sample=70 | count=7 | output invalid
+PASS: sample=80 | expected=45 | got=45
+PASS: sample=100 | expected=56 | got=56
+PASS: sample=50 | count=1 | output invalid
+PASS: sample=50 | count=2 | output invalid
+PASS: sample=50 | count=3 | output invalid
+PASS: sample=50 | count=4 | output invalid
+PASS: sample=50 | count=5 | output invalid
+PASS: sample=50 | count=6 | output invalid
+PASS: sample=50 | count=7 | output invalid
+PASS: sample=50 | expected=50 | got=50
+PASS: sample=50 | expected=50 | got=50
+PASS: sample=50 | expected=50 | got=50
+PASS: sample=0 | count=1 | output invalid
+PASS: sample=0 | count=2 | output invalid
+PASS: sample=0 | count=3 | output invalid
+PASS: sample=0 | count=4 | output invalid
+PASS: sample=0 | count=5 | output invalid
+PASS: sample=0 | count=6 | output invalid
+PASS: sample=0 | count=7 | output invalid
+PASS: sample=0 | expected=0 | got=0
+PASS: sample=80 | expected=10 | got=10
+PASS: sample=80 | expected=20 | got=20
+PASS: sample=80 | expected=30 | got=30
+PASS: sample=80 | expected=40 | got=40
+PASS: sample=80 | expected=50 | got=50
+PASS: sample=80 | expected=60 | got=60
+PASS: sample=80 | expected=70 | got=70
+PASS: sample=80 | expected=80 | got=80
+PASS: sample=36 | count=1 | output invalid
+PASS: sample=129 | count=2 | output invalid
+PASS: sample=9 | count=3 | output invalid
+PASS: sample=99 | count=4 | output invalid
+PASS: sample=13 | count=5 | output invalid
+PASS: sample=141 | count=6 | output invalid
+PASS: sample=101 | count=7 | output invalid
+PASS: sample=18 | expected=68 | got=68
+PASS: sample=1 | expected=63 | got=63
+PASS: sample=13 | expected=49 | got=49
+PASS: sample=118 | expected=63 | got=63
+PASS: sample=61 | expected=58 | got=58
+PASS: sample=237 | expected=86 | got=86
+PASS: sample=140 | expected=86 | got=86
+PASS: sample=249 | expected=104 | got=104
+PASS: sample=198 | expected=127 | got=127
+PASS: sample=197 | expected=151 | got=151
+PASS: sample=170 | expected=171 | got=171
+PASS: sample=229 | expected=185 | got=185
+PASS: sample=119 | expected=192 | got=192
+PASS: sample=18 | expected=165 | got=165
+PASS: sample=143 | expected=165 | got=165
+PASS: sample=242 | expected=164 | got=164
+PASS: sample=206 | expected=165 | got=165
+PASS: sample=232 | expected=169 | got=169
+PASS: sample=197 | expected=173 | got=173
+PASS: sample=92 | expected=156 | got=156
+PASS: sample=189 | expected=164 | got=164
+PASS: sample=45 | expected=168 | got=168
+PASS: sample=101 | expected=163 | got=163
+PASS: sample=255 | count=1 | output invalid
+PASS: sample=255 | count=2 | output invalid
+PASS: sample=255 | count=3 | output invalid
+PASS: sample=255 | count=4 | output invalid
+PASS: sample=255 | count=5 | output invalid
+PASS: sample=255 | count=6 | output invalid
+PASS: sample=255 | count=7 | output invalid
+PASS: sample=255 | expected=255 | got=255
+PASS: sample=255 | expected=255 | got=255
+PASS: sample=255 | expected=255 | got=255
+PASS: sample=255 | expected=255 | got=255
+PASS: sample=10 | count=1 | output invalid
+PASS: sample=20 | count=2 | output invalid
+PASS: sample=30 | count=3 | output invalid
+PASS: invalid sample=99 | sample ignored
+PASS: sample=40 | count=4 | output invalid
+PASS: sample=50 | count=5 | output invalid
+PASS: sample=60 | count=6 | output invalid
+PASS: sample=70 | count=7 | output invalid
+PASS: sample=80 | expected=45 | got=45
+PASS: sample=10 | count=1 | output invalid
+PASS: sample=20 | count=2 | output invalid
+PASS: sample=30 | count=3 | output invalid
+PASS: sample=40 | count=4 | output invalid
+PASS: sample=1 | count=1 | output invalid
+PASS: sample=2 | count=2 | output invalid
+PASS: sample=3 | count=3 | output invalid
+PASS: sample=4 | count=4 | output invalid
+PASS: sample=5 | count=5 | output invalid
+PASS: sample=6 | count=6 | output invalid
+PASS: sample=7 | count=7 | output invalid
+PASS: sample=8 | expected=4 | got=4
+--------------------------------
+Simulation finished.
+--------------------------------
+tb/moving_average_8_tb.v:397: $finish called at 1156000 (1ps)

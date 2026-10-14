@@ -398,4 +398,8 @@ module moving_average_8_tb;
 
     end
 
+    initial begin
+        $dumpfile("sim/moving_average_8.vcd");
+        $dumpvars(0, moving_average_8_tb);
+    end
 endmodule
